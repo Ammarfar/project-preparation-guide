@@ -6,7 +6,7 @@ Tujuan: menjelaskan *bagaimana sistem dibangun*.
 
 ---
 
-## 1. System Overview (HLD)
+## 1. System Overview
 
 ### Application context
 
