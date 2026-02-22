@@ -35,7 +35,6 @@ Contoh metric:
 
 * Feature list
 * User flow (UI journey)
-* Business use cases (system behavior)
 
 ### Scope definition
 
