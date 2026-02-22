@@ -11,62 +11,49 @@ Tujuan: menjelaskan *bagaimana sistem dibangun*.
 ### Application context
 
 * Web / mobile / internal / public
-* Expected traffic:
-
-  * Low <1k/day
-  * Medium 10k–100k/day
-  * High millions
+* Expected traffic
 
 ### Architecture design
 
-* Monolith / modular monolith / microservices
-* High level design
+* Runtime System: Monolith / modular monolith / microservices
+* Application Structure: Layered (N-tier) / module-based / clean
+* High level diagram
 
 ---
 
-## 2. Service Boundaries & Data Ownership
+## 2. Data Model
 
-### Golden rule
-
-> Only ONE service can WRITE its data.
-
-Service lain:
-
-* Read via API / event
-* Tidak boleh akses DB langsung
-
-### Example (E-commerce)
-
-| Service | Responsibility  | Owned Data          |
-| ------- | --------------- | ------------------- |
-| User    | Auth, profile   | users, addresses    |
-| Product | Catalog, stock  | products, inventory |
-| Order   | Order lifecycle | orders, order_items |
-| Payment | Transactions    | payments            |
-
-Order menyimpan snapshot:
-
-* product_name_snapshot
-* price_snapshot
-
-Agar history tidak berubah.
+* Entities
+* Relationships
+* Constraints [Optional if any]
+* Design Decisions [Optional if any]
 
 ---
 
-## 3. Data & API Design
+## 3. API Design
 
-* Domain model / ERD
-* API contract (main endpoints)
-* Event design (jika event-driven)
-* System use case / data orchestration
+* System use case / data orchestration (each API)
+* API contract (URL, request, response)
+* Event design (Key, request, response)
 
 ---
 
 ## 4. Non-Functional Requirements (NFR)
 
-### Performance
+### Reliability
 
-* Target response time (ex: <300ms)
+* Failure & error handling
+* Timeout strategy
+* Testing strategy
+* Retry strategy
+* Idempotency
+* Circuit breaker
+
+### Security
+
+* Auth strategy (JWT/OAuth)
+* Rate limiting
+* Data protection
 
 ### Scalability
 
@@ -78,20 +65,9 @@ Agar history tidak berubah.
 * Database strategy
 * Storage scaling
 
-### Security
+### Performance
 
-* Auth strategy (JWT/OAuth)
-* Rate limiting
-* Data protection
-
-### Reliability
-
-* Error handling
-* Testing strategy
-* Retry strategy
-* Idempotency
-* Circuit breaker
-* Timeout strategy
+* Target response time (ex: <300ms)
 
 ### Observability
 
